@@ -1,11 +1,4 @@
 provider "aws" {
-  region = var.aws_region
+  region = "us-east-1"
 }
 
-terraform {
-  backend "s3" {
-    bucket = var.backend_bucket
-    key    = var.backend_key
-    region = var.backend_region
-  }
-}
