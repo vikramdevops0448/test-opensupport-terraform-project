@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/vikramdevops0448/test-opensupport-terraform-project.git’
+                git branch: 'main', url: 'https://github.com/vikramdevops0448/test-opensupport-terraform-project.git'
             }
         }
 
@@ -53,5 +53,4 @@ pipeline {
             echo 'Pipeline failed. Check the logs!'
         }
     }
-}
 }
