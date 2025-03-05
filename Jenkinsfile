@@ -39,7 +39,7 @@ pipeline {
         stage('Apply Terraform') {
             steps {
                 script {
-                    sh 'terraform apply'
+                    sh 'terraform apply -var-file=terraform.tfvars -auto-approve'
                 }
             }
         }
