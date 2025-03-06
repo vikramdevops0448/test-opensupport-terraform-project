@@ -3,7 +3,7 @@ resource "aws_instance" "app_instance" {
   instance_type               = var.instance_type
   subnet_id                   = aws_subnet.public_subnet.id
   security_groups             = [aws_security_group.ec2_security_group.id]
-  key_name                    = "jenkins"  # Add your SSH key
+  #key_name                    = "jenkins"  # Add your SSH key
 
   tags = {
     Name = "${var.environment}-app-instance"
