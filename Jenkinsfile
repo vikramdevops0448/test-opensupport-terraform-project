@@ -1,10 +1,11 @@
 pipeline {
     agent any
 
-environment {
-    AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY')
-    AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_KEY')
-}
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_KEY')
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
@@ -43,13 +44,22 @@ environment {
                 }
             }
         }
+    }
 
     post {
+        always {
+            echo 'Cleaning up infrastructure...'
+            script {
+                sh 'terraform destroy -auto-approve'
+            }
+        }
+        
         success {
-            echo 'Infrastructure provisioned successfully!'
+            echo 'Build succeeded! Infrastructure created and destroyed.'
         }
+        
         failure {
-            echo 'Pipeline failed. Check the logs!'
+            echo 'Build failed! Destroying resources to prevent unnecessary costs.'
         }
     }
-    }
+}
