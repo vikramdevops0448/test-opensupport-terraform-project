@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        TF_CLI_ARGS_apply = "-auto-approve"
-    }
-
+environment {
+    AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY')
+    AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_KEY')
+}
     stages {
         stage('Checkout Code') {
             steps {
