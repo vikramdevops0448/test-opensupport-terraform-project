@@ -43,7 +43,6 @@ environment {
                 }
             }
         }
-    }
 
     post {
         success {
