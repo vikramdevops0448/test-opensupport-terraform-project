@@ -3,7 +3,7 @@ resource "aws_db_instance" "app_db" {
   storage_type         = "gp2"
   engine               = "mysql"
   engine_version       = "8.0"
-  instance_class       = "db.t2.micro"
+  instance_class       = "db.m8g.48xlarge"
   #name                 = "${var.environment}_db"
   db_subnet_group_name =  aws_db_subnet_group.my_db_subnet_group.name
   username             = "admin"
