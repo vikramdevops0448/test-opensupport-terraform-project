@@ -52,8 +52,7 @@ environment {
             echo 'Pipeline failed. Check the logs!'
         }
     }
-}
-post {
+   post {
         always {
             echo 'Cleaning up infrastructure...'
             sh 'terraform destroy -auto-approve'
