@@ -46,7 +46,7 @@ pipeline {
         }
     }
 
-    post {
+    /*post {
         always {
             echo 'Cleaning up infrastructure...'
             script {
@@ -61,5 +61,5 @@ pipeline {
         failure {
             echo 'Build failed! Destroying resources to prevent unnecessary costs.'
         }
-    }
+    }*\
 }
