@@ -45,22 +45,13 @@ pipeline {
             }
         }
     }
-}
 
-    /*post {
-        always {
-            echo 'Cleaning up infrastructure...'
-            script {
-                sh 'terraform destroy -auto-approve'
-            }
-        }
-        
+    post {
         success {
-            echo 'Build succeeded! Infrastructure created and destroyed.'
+            echo 'Infrastructure provisioned successfully!'
         }
-        
         failure {
-            echo 'Build failed! Destroying resources to prevent unnecessary costs.'
+            echo 'Pipeline failed. Check the logs!'
         }
     }
 }
