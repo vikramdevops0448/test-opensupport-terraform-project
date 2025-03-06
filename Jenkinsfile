@@ -45,6 +45,7 @@ pipeline {
             }
         }
     }
+}
 
     /*post {
         always {
@@ -61,5 +62,5 @@ pipeline {
         failure {
             echo 'Build failed! Destroying resources to prevent unnecessary costs.'
         }
-    }*\
+    }
 }
