@@ -54,3 +54,19 @@ environment {
         }
     }
 }
+post {
+        always {
+            echo 'Cleaning up infrastructure...'
+            sh 'terraform destroy -auto-approve'
+        }
+        
+        success {
+            echo 'Build succeeded! Infrastructure created and destroyed.'
+        }
+        
+        failure {
+            echo 'Build failed! Destroying resources to prevent unnecessary costs.'
+            sh 'terraform destroy -auto-approve'
+        }
+    }
+}
