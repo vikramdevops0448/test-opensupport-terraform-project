@@ -5,6 +5,7 @@ resource "aws_db_instance" "app_db" {
   engine_version       = "8.0"
   instance_class       = "db.t2.micro"
   #name                 = "${var.environment}_db"
+  db_subnet_group_name =  aws_db_subnet_group.my_db_subnet_group.name
   username             = "admin"
   password             = var.db_password
   parameter_group_name = "default.mysql8.0"
@@ -15,5 +16,19 @@ resource "aws_db_instance" "app_db" {
 
   tags = {
     Name = "${var.environment}-rds-instance"
+  }
+}
+
+resource "aws_db_subnet_group" "my_db_subnet_group" {
+  name        = "my-db-subnet-group"
+  description = "My DB subnet group"
+  
+  subnet_ids = [
+    aws_subnet.public_subnet.id,
+    aws_subnet.private_subnet.id
+  ]
+
+  tags = {
+    Name = "My DB Subnet Group"
   }
 }
