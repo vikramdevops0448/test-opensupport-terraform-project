@@ -24,7 +24,7 @@ resource "aws_db_subnet_group" "my_db_subnet_group" {
   description = "My DB subnet group"
   
   subnet_ids = [
-    aws_subnet.public_subnet.id,
+    aws_subnet.private_subnet1.id,
     aws_subnet.private_subnet.id
   ]
 
