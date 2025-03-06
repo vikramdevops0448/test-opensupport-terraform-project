@@ -1,4 +1,4 @@
-resource "aws_db_instance" "app_db" {
+/*resource "aws_db_instance" "app_db" {
   allocated_storage    = 20
   storage_type         = "gp2"
   engine               = "mysql"
@@ -31,4 +31,4 @@ resource "aws_db_subnet_group" "my_db_subnet_group" {
   tags = {
     Name = "My DB Subnet Group"
   }
-}
+}*/
