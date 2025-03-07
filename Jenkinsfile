@@ -44,14 +44,26 @@ pipeline {
                 }
             }
         }
+
+        stage('Destroy Terraform') {
+            steps {
+                script {
+                    input message: 'Do you want to destroy the infrastructure?', ok: 'Yes, destroy'
+                    sh 'terraform destroy -var-file=terraform.tfvars -auto-approve'
+                }
+            }
+        }
     }
 
     post {
         success {
-            echo 'Infrastructure provisioned successfully!'
+            echo 'Infrastructure provisioned and managed successfully!'
         }
         failure {
             echo 'Pipeline failed. Check the logs!'
         }
     }
 }
+
+
+
